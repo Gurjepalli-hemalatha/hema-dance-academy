@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dance Classes - Hema Dance Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: #181818;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff4da6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff4da6;
+        }
+
+        /* Header */
+        .page-header {
+            height: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
+                url("images/classes-banner.jpg") center/cover;
+        }
+
+        .page-header h1 {
+            font-size: 52px;
+        }
+
+        .page-header span {
+            color: #ff4da6;
+        }
+
+        .page-header p {
+            margin-top: 10px;
+            color: #ddd;
+            font-size: 18px;
+        }
+
+        /* Classes */
+        .classes {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #ff4da6;
+            font-size: 36px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        .class-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .class-card {
+            background: #1d1d1d;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: .3s;
+            box-shadow: 0 5px 20px rgba(255, 77, 166, .08);
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 77, 166, .2);
+        }
+
+        .class-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .class-content {
+            padding: 25px;
+        }
+
+        .class-content h3 {
+            color: #ff4da6;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .class-content p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .class-info {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #444;
+            padding-top: 15px;
+            color: #ddd;
+        }
+
+        .level {
+            color: #ff4da6;
+            font-weight: bold;
+        }
+
+        /* Benefits */
+        .benefits {
+            padding: 70px 7%;
+            background: #181818;
+        }
+
+        .benefit-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .benefit {
+            text-align: center;
+            background: #222;
+            padding: 30px 20px;
+            border-radius: 15px;
+        }
+
+        .benefit-icon {
+            font-size: 45px;
+        }
+
+        .benefit h3 {
+            color: #ff4da6;
+            margin: 12px 0;
+        }
+
+        .benefit p {
+            color: #bbb;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 70px 7%;
+            text-align: center;
+            background: linear-gradient(135deg, #451536, #111);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff4da6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e60073;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: #ff4da6;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            💃 Hema Dance Academy
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="instructors.html">Instructors</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Page Header -->
+    <header class="page-header">
+
+        <div>
+            <h1>Our <span>Dance Classes</span></h1>
+
+            <p>
+                Learn • Practice • Perform • Inspire
+            </p>
+        </div>
+
+    </header>
+
+
+    <!-- Dance Classes -->
+    <section class="classes">
+
+        <div class="section-title">
+
+            <h2>Explore Our Dance Styles</h2>
+
+            <p>
+                Choose your favorite dance style and start your journey.
+            </p>
+
+        </div>
+
+
+        <div class="class-container">
+
+
+            <!-- Classical -->
+            <div class="class-card">
+
+                <img src="hemappics/class12.jpeg"
+                     alt="Classical Dance">
+
+                <div class="class-content">
+
+                    <h3>Classical Dance</h3>
+
+                    <p>
+                        Learn traditional Indian classical dance,
+                        expressions, hand gestures and graceful movements.
+                    </p>
+
+                    <div class="class-info">
+                        <span>⏱ 1 Hour</span>
+                        <span class="level">Beginner</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hip Hop -->
+            <div class="class-card">
+
+                <img src="hemappics/class2.jpeg"
+                     alt="Hip Hop Dance">
+
+                <div class="class-content">
+
+                    <h3>Hip Hop</h3>
+
+                    <p>
+                        Learn energetic hip-hop moves, freestyle,
+                        street dance and modern choreography.
+                    </p>
+
+                    <div class="class-info">
+                        <span>⏱ 1 Hour</span>
+                        <span class="level">All Levels</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bollywood -->
+            <div class="class-card">
+
+                <img src="hemappics/class3.png"
+                     alt="Bollywood Dance">
+
+                <div class="class-content">
+
+                    <h3>Bollywood Dance</h3>
+
+                    <p>
+                        Enjoy colorful Bollywood songs, expressions,
+                        energetic movements and fun choreography.
+                    </p>
+
+                    <div class="class-info">
+                        <span>⏱ 1 Hour</span>
+                        <span class="level">Beginner</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Contemporary -->
+            <div class="class-card">
+
+                <img src="hemappics/class4.jpeg"
+                     alt="Contemporary Dance">
+
+                <div class="class-content">
+
+                    <h3>Contemporary</h3>
+
+                    <p>
+                        Express emotions through creative movements,
+                        flexibility and contemporary dance techniques.
+                    </p>
+
+                    <div class="class-info">
+                        <span>⏱ 1 Hour</span>
+                        <span class="level">Intermediate</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Group Dance -->
+            <div class="class-card">
+
+                <img src="hemappics/class5.jpeg"
+                     alt="Group Dance">
+
+                <div class="class-content">
+
+                    <h3>Group Dance</h3>
+
+                    <p>
+                        Build teamwork and stage confidence through
+                        exciting group choreography.
+                    </p>
+
+                    <div class="class-info">
+                        <span>⏱ 1.5 Hours</span>
+                        <span class="level">All Levels</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Freestyle -->
+            <div class="class-card">
+
+                <img src="hemappics/class6.png"
+                     alt="Freestyle Dance">
+
+                <div class="class-content">
+
+                    <h3>Freestyle</h3>
+
+                    <p>
+                        Explore your own style with modern music,
+                        freestyle movements and creative choreography.
+                    </p>
+
+                    <div class="class-info">
+                        <span>⏱ 1 Hour</span>
+                        <span class="level">All Levels</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Benefits -->
+    <section class="benefits">
+
+        <div class="section-title">
+
+            <h2>What You Will Learn</h2>
+
+            <p>
+                Develop your skills and confidence through dance.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-container">
+
+            <div class="benefit">
+
+                <div class="benefit-icon"> 
+                     <img src="hemappics/class7.png"width=100% height=160>
+                </div>
+
+                <h3>Dance Skills</h3>
+
+                <p>
+                    Improve your movements, rhythm and coordination.
+                </p>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">                           
+               <img src="hemappics/class8.png"width=100% height=160>
+</div>
+
+                <h3>Musicality</h3>
+
+                <p>
+                    Understand beats, rhythm and modern music.
+                </p>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon"> 
+                <img src="hemappics/class9.png"width=100% height=160>
+</div>
+
+                <h3>Stage Performance</h3>
+
+                <p>
+                    Build confidence through performances and events.
+                </p>
+
+            </div>
+
+
+            <div class="benefit">
+
+                <div class="benefit-icon">       
+                     <img src="hemappics/class10.png"width=100% height=160>
+</div>
+
+                <h3>Teamwork</h3>
+
+                <p>
+                    Learn cooperation and teamwork through group dance.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <h2>Ready to Dance?</h2>
+
+        <p>
+            Choose your class and begin your dance journey with us.
+        </p>
+
+        <a href="registration.html" class="btn">
+            Register Now
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>💃 Hema Dance Academy</h3>
+
+        <p>
+            Learn • Express • Perform • Inspire
+        </p>
+
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+        </div>
+
+        <p>
+            © 2026 Hema Dance Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

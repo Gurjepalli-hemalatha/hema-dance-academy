@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us - Hema Dance Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            background: #181818;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff4da6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff4da6;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.75)),
+                url("image/abt.jpg") center/cover;
+        }
+
+        .page-header h1 {
+            font-size: 55px;
+            color: white;
+        }
+
+        .page-header h1 span {
+            color: #ff4da6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 70px 7%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-content h2 {
+            color: #ff4da6;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        /* Mission Vision */
+        .mission-section {
+            padding: 70px 7%;
+            background: #181818;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #ff4da6;
+            font-size: 36px;
+        }
+
+        .section-title p {
+            color: #aaa;
+        }
+
+        .mission-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .mission-card {
+            background: #222;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .mission-card .icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .mission-card h3 {
+            color: #ff4da6;
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .mission-card p {
+            color: #ccc;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 70px 7%;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .feature {
+            text-align: center;
+            background: #1d1d1d;
+            padding: 30px 20px;
+            border-radius: 15px;
+        }
+
+        .feature h3 {
+            color: #ff4da6;
+            margin: 12px 0;
+        }
+
+        .feature p {
+            color: #bbb;
+        }
+
+        .feature-icon {
+            font-size: 42px;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 70px 7%;
+            background: linear-gradient(135deg, #421238, #111);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff4da6;
+            color: white;
+            padding: 13px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e60073;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .social a:hover {
+            color: #ff4da6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 40px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            💃 Hema Dance Academy
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="instructors.html">Instructors</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Page Header -->
+    <header class="page-header">
+
+        <div>
+            <h1>About <span>Hema Dance Academy</span></h1>
+            <p>Where Passion Meets Perfection</p>
+        </div>
+
+    </header>
+
+
+    <!-- About Academy -->
+    <section class="about">
+
+        <div>
+            <img src="hemappics/abt.png"
+                 alt="Hema Dance Academy">
+        </div>
+
+        <div class="about-content">
+
+            <h2>About Our Academy</h2>
+
+            <p>
+                Welcome to <strong>Hema Dance Academy</strong>, a place
+                where passion, creativity and talent come together.
+            </p>
+
+            <p>
+                Our academy provides professional dance training for
+                beginners, intermediate and advanced dancers.
+            </p>
+
+            <p>
+                We teach different dance styles including Classical,
+                Hip Hop, Bollywood, Contemporary and Group Dance.
+            </p>
+
+            <p>
+                Our goal is to help every student develop confidence,
+                discipline, creativity and excellent dancing skills.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Mission & Vision -->
+    <section class="mission-section">
+
+        <div class="section-title">
+            <h2>Our Mission & Vision</h2>
+            <p>Learn • Express • Perform • Inspire</p>
+        </div>
+
+        <div class="mission-container">
+
+            <div class="mission-card">
+
+                <div class="icon">           
+                     <img src="hemappics/abt1.jpeg" width=100% height=260>
+                    </div>
+
+                <h3>Our Mission</h3>
+
+                <p>
+                    To provide high-quality dance education and create
+                    a positive environment where every student can
+                    discover and develop their talent.
+                </p>
+
+            </div>
+
+
+            <div class="mission-card">
+
+                <div class="icon">                 
+                <img src="hemappics/abt2.jpeg" width=100% height=260 >
+</div>
+
+                <h3>Our Vision</h3>
+
+                <p>
+                    To become a leading dance academy that inspires
+                    dancers to achieve their dreams and confidently
+                    perform on every stage.
+                </p>
+
+            </div>
+
+
+            <div class="mission-card">
+
+                <div class="icon">             
+              <img src="hemappics/abt3.png" width=100% height=260px>
+</div>
+
+                <h3>Our Values</h3>
+
+                <p>
+                    Passion, discipline, creativity, teamwork,
+                    respect and continuous learning are the values
+                    we encourage in every dancer.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+
+        <div class="section-title">
+
+            <h2>Why Choose Hema Dance Academy?</h2>
+
+            <p>
+                Everything you need to become a confident dancer.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">             
+                     <img src="hemappics/abt4.png" width=100% heigth=260 >
+
+                </div>
+
+                <h3>Expert Instructors</h3>
+
+                <p>
+                    Learn from experienced and professional dance
+                    instructors.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">             
+                 <img src="hemappics/abt5.jpeg" width=100% heigth=260>
+   </div>
+
+                <h3>Modern Music</h3>
+
+                <p>
+                    Practice with modern music, energetic beats and
+                    exciting choreography.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                              <img src="hemappics/abt6.jpeg" width=100% heigth=260 >
+                </div>
+
+                <h3>Competitions</h3>
+
+                <p>
+                    Get opportunities to participate in competitions
+                    and stage performances.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">               
+              <img src="hemappics/abt7.png" width=100% heigth=260>
+</div>
+
+                <h3>Multiple Styles</h3>
+
+                <p>
+                    Learn Classical, Bollywood, Hip Hop,
+                    Contemporary and more.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Call To Action -->
+    <section class="cta">
+
+        <h2>Start Your Dance Journey Today!</h2>
+
+        <p>
+            Discover your talent and express yourself through dance.
+        </p>
+
+        <a href="registration.html" class="btn">
+            Join Hema Dance Academy
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>💃 Hema Dance Academy</h3>
+
+        <p>
+            Learn • Express • Perform • Inspire
+        </p>
+
+        <div class="social">
+
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+
+        </div>
+
+        <p>
+            © 2026 Hema Dance Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

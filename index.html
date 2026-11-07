@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> 💃 Hema Dance Academy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #181818;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ff4da6;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff4da6;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 7%;
+            background:
+                linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
+                url("images/dance-hero.jpg") center/cover;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ff4da6;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff4da6;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #e60073;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff4da6;
+        }
+
+        /* Sections */
+        section {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            color: #ff4da6;
+        }
+
+        .section-title p {
+            color: #ccc;
+        }
+
+        /* Classes */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #1d1d1d;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .feature {
+            background: #1d1d1d;
+            padding: 30px 20px;
+            border-radius: 15px;
+        }
+
+        .feature .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            color: #ff4da6;
+        }
+
+        /* Instructors */
+        .instructor img {
+            height: 260px;
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: #1d1d1d;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .testimonial p {
+            color: #ddd;
+            font-style: italic;
+        }
+
+        .testimonial h4 {
+            margin-top: 15px;
+            color: #ff4da6;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, #3a1230, #111);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: white;
+            margin: 0 8px;
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: #ff4da6;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">💃 Hema Dance Academy</div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="instructors.html">Instructors</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+                            <img src="hemappics/img.jpeg" width=1100px height=500px>
+            <h1>Dance Your <span>Dreams</span></h1>
+
+            <p>
+                Welcome to Hema Dance Academy – learn, practice,
+                perform and express yourself through the power of dance.
+            </p>
+
+            <a href="registration.html" class="btn">Join Now</a>
+            <a href="classes.html" class="btn btn-outline">Explore Classes</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section>
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+            <p>Learn dance from experienced professionals in a friendly environment.</p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="icon">  
+               <img src="hemappics/img4.jpeg" width=220 height=160>
+</div>
+                <h3>Expert Instructors</h3>
+                <p>Learn from trained and experienced dance professionals.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">          
+      <img src="hemappics/img3.jpeg" width=220 height=160>
+</div>
+                <h3>Modern Music</h3>
+                <p>Enjoy energetic music and exciting choreography.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">   
+       <img src="hemappics/img5.jpeg"  width=220 height=160>
+</div>
+                <h3>Competitions</h3>
+                <p>Get opportunities to participate in dance competitions.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">    
+           <img src="hemappics/img6.jpeg"  width=220 height=160>
+</div>
+                <h3>Friendly Environment</h3>
+                <p>Improve your skills in a positive and supportive atmosphere.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Dance Classes -->
+    <section>
+        <div class="section-title">
+            <h2>Our Dance Classes</h2>
+            <p>Choose your favorite style and start dancing today.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <img src="hemappics/img7.jpeg"  width=220 height=160>
+                <div class="card-content">
+                    <h3>Classical Dance</h3>
+                    <p>Learn traditional Indian dance forms with proper techniques.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="hemappics/img8.jpeg" width=220 height=160>
+                <div class="card-content">
+                    <h3>Hip Hop</h3>
+                    <p>Learn energetic hip-hop movements and freestyle choreography.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="hemappics/img9.jpeg"   width=220 height=160>
+                <div class="card-content">
+                    <h3>Bollywood</h3>
+                    <p>Enjoy colorful Bollywood songs and exciting dance moves.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="hemappics/img13.jpeg"  width=220 height=160>
+                <div class="card-content">
+                    <h3>Contemporary</h3>
+                    <p>Express emotions through creative contemporary movements.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Instructors -->
+    <section>
+        <div class="section-title">
+            <h2>Our Instructors</h2>
+            <p>Meet our talented dance instructors.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card instructor">
+                <img src="hemappics/img12.jpeg"  width=220 height=160>
+                <div class="card-content">
+                    <h3>Priya Sharma</h3>
+                    <p>Classical Dance Instructor</p>
+                </div>
+            </div>
+
+            <div class="card instructor">
+                <img src="hemappics/img11.jpeg"  width=220 height=160>
+                <div class="card-content">
+                    <h3>Sruthi Sharma</h3>
+                    <p>Hip Hop Instructor</p>
+                </div>
+            </div>
+
+            <div class="card instructor">
+                <img src="hemappics/img10.jpeg" width=220 height=160>
+                <div class="card-content">
+                    <h3>Anjali Rao</h3>
+                    <p>Contemporary Instructor</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <div class="section-title">
+            <h2>Student Reviews</h2>
+            <p>What our students say about us.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="testimonial">
+                <p>
+                    "The instructors are very friendly and supportive.
+                    I improved my dancing skills within a few months."
+                </p>
+                <h4>— Sneha</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>
+                    "Amazing atmosphere and great choreography.
+                    I really enjoy every class."
+                </p>
+                <h4>— Arjun</h4>
+            </div>
+
+            <div class="testimonial">
+                <p>
+                    "Hema Dance Academy helped me gain confidence
+                    and perform on stage."
+                </p>
+                <h4>— Kavya</h4>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="cta">
+        <h2>Ready to Start Dancing?</h2>
+
+        <p>
+            Join our academy and discover your passion for dance.
+        </p>
+
+        <a href="registration.html" class="btn">Register Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>💃 Hema Dance Academy</h3>
+
+        <p>
+            Learn • Practice • Perform • Inspire
+        </p>
+
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+        </div>
+
+        <p>
+            © 2026 Hema Dance Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery - Hema Dance Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #181818;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff4da6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff4da6;
+        }
+
+        /* Header */
+        .page-header {
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
+                url("images/gallery-banner.jpg") center/cover;
+        }
+
+        .page-header h1 {
+            font-size: 52px;
+        }
+
+        .page-header h1 span {
+            color: #ff4da6;
+        }
+
+        .page-header p {
+            color: #ddd;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Gallery */
+        .gallery-section {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            color: #ff4da6;
+            font-size: 36px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        /* Filter Buttons */
+        .filters {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: #222;
+            color: white;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #ff4da6;
+            border-color: #ff4da6;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #1d1d1d;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,.9));
+            transform: translateY(100%);
+            transition: .4s;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .overlay h3 {
+            color: #ff4da6;
+        }
+
+        .overlay p {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 70px 7%;
+            background: #181818;
+            text-align: center;
+        }
+
+        .video-box {
+            max-width: 850px;
+            margin: 30px auto 0;
+            background: #222;
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .video-box video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Memories */
+        .memories {
+            padding: 70px 7%;
+        }
+
+        .memory-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .memory-card {
+            background: #1d1d1d;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .memory-icon {
+            font-size: 45px;
+        }
+
+        .memory-card h3 {
+            color: #ff4da6;
+            margin: 12px 0;
+        }
+
+        .memory-card p {
+            color: #bbb;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 70px 7%;
+            background: linear-gradient(135deg, #451536, #111);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff4da6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e60073;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: #ff4da6;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            💃 Hema Dance Academy
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="instructors.html">Instructors</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Header -->
+    <header class="page-header">
+
+        <div>
+
+            <h1>Our <span>Gallery</span></h1>
+
+            <p>
+                Moments • Memories • Performances
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+
+        <div class="section-title">
+
+            <h2>Dance Moments</h2>
+
+            <p>
+                Explore memorable moments from Hema Dance Academy.
+            </p>
+
+        </div>
+
+
+        <!-- Filter Buttons -->
+        <div class="filters">
+
+            <button class="filter-btn active"
+                    onclick="filterGallery('all')">
+                All
+            </button>
+
+            <button class="filter-btn"
+                    onclick="filterGallery('classical')">
+                Classical
+            </button>
+
+            <button class="filter-btn"
+                    onclick="filterGallery('hiphop')">
+                Hip Hop
+            </button>
+
+            <button class="filter-btn"
+                    onclick="filterGallery('bollywood')">
+                Bollywood
+            </button>
+
+            <button class="filter-btn"
+                    onclick="filterGallery('events')">
+                Events
+            </button>
+
+        </div>
+
+
+        <!-- Images -->
+        <div class="gallery">
+
+            <div class="gallery-item classical">
+                <img src="hemappics/gallery9.jpg"
+                     alt="Classical Dance">
+                <div class="overlay">
+                    <h3>Classical Dance</h3>
+                    <p>Grace and traditional expressions.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item hiphop">
+                <img src="hemappics/gallery5.jpeg"
+                     alt="Hip Hop Dance">
+                <div class="overlay">
+                    <h3>Hip Hop</h3>
+                    <p>Energy, rhythm and freestyle.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item bollywood">
+                <img src="hemappics/gallery3.jpeg"
+                     alt="Bollywood Dance">
+                <div class="overlay">
+                    <h3>Bollywood</h3>
+                    <p>Fun and energetic choreography.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item events">
+                <img src="hemappics/gallery23.png"
+                     alt="Dance Event">
+                <div class="overlay">
+                    <h3>Annual Event</h3>
+                    <p>Students performing on stage.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item classical">
+                <img src="hemappics/gallery24.png"
+                     alt="Classical Performance">
+                <div class="overlay">
+                    <h3>Classical Performance</h3>
+                    <p>A beautiful stage performance.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item hiphop">
+                <img src="hemappics/gallery4.jpeg"
+                     alt="Hip Hop Performance">
+                <div class="overlay">
+                    <h3>Hip Hop Performance</h3>
+                    <p>Modern moves and powerful energy.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item bollywood">
+                <img src="hemappics/gallery6.jpeg"
+                     alt="Bollywood Performance">
+                <div class="overlay">
+                    <h3>Bollywood Performance</h3>
+                    <p>Colorful music and dance.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item events">
+                <img src="hemappics/gallery21.png"
+                     alt="Dance Competition">
+                <div class="overlay">
+                    <h3>Dance Competition</h3>
+                    <p>Our talented students on stage.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item events">
+                <img src="hemappics/gallery8.png"
+                     alt="Dance Workshop">
+                <div class="overlay">
+                    <h3>Dance Workshop</h3>
+                    <p>Learning from expert instructors.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item classical">
+                <img src="hemappics/gallery20.png"
+                     alt="Dance Training">
+                <div class="overlay">
+                    <h3>Dance Training</h3>
+                    <p>Practice makes perfect.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item hiphop">
+                <img src="hemappics/gallery30.jpg"
+                     alt="Modern Dance">
+                <div class="overlay">
+                    <h3>Modern Dance</h3>
+                    <p>Express yourself through movement.</p>
+                </div>
+            </div>
+
+
+            <div class="gallery-item events">
+                <img src="hemappics/gallery7.png"
+                     alt="Academy Event">
+                <div class="overlay">
+                    <h3>Academy Event</h3>
+                    <p>Celebrating dance and talent.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Memories -->
+    <section class="memories">
+
+        <div class="section-title">
+
+            <h2>Our Special Moments</h2>
+
+            <p>
+                Every performance creates a beautiful memory.
+            </p>
+
+        </div>
+
+
+        <div class="memory-container">
+
+            <div class="memory-card">
+
+                <div class="memory-icon">🏆</div>
+
+                <h3>Competitions</h3>
+
+                <p>
+                    Celebrating the achievements of our talented dancers.
+                </p>
+
+            </div>
+
+
+            <div class="memory-card">
+
+                <div class="memory-icon">🎭</div>
+
+                <h3>Stage Shows</h3>
+
+                <p>
+                    Giving students confidence through stage performances.
+                </p>
+
+            </div>
+
+
+            <div class="memory-card">
+
+                <div class="memory-icon">🎉</div>
+
+                <h3>Annual Events</h3>
+
+                <p>
+                    Creating unforgettable moments together.
+                </p>
+
+            </div>
+
+
+            <div class="memory-card">
+
+                <div class="memory-icon">💃</div>
+
+                <h3>Dance Workshops</h3>
+
+                <p>
+                    Learning new techniques from experienced instructors.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <h2>Be Part of Our Dance Family</h2>
+
+        <p>
+            Join Hema Dance Academy and create your own dance memories.
+        </p>
+
+        <a href="registration.html" class="btn">
+            Join Now
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>💃 Hema Dance Academy</h3>
+
+        <p>
+            Learn • Express • Perform • Inspire
+        </p>
+
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+        </div>
+
+        <p>
+            © 2026 Hema Dance Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function filterGallery(category) {
+
+            let items =
+                document.querySelectorAll(".gallery-item");
+
+            let buttons =
+                document.querySelectorAll(".filter-btn");
+
+            buttons.forEach(function(button) {
+                button.classList.remove("active");
+            });
+
+            event.target.classList.add("active");
+
+            items.forEach(function(item) {
+
+                if (category === "all") {
+
+                    item.style.display = "block";
+
+                } else {
+
+                    if (item.classList.contains(category)) {
+
+                        item.style.display = "block";
+
+                    } else {
+
+                        item.style.display = "none";
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>

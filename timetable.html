@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Timetable - Hema Dance Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #181818;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff4da6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff4da6;
+        }
+
+        /* Header */
+        .page-header {
+            height: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
+                url("images/timetable-banner.jpg") center/cover;
+        }
+
+        .page-header h1 {
+            font-size: 52px;
+        }
+
+        .page-header h1 span {
+            color: #ff4da6;
+        }
+
+        .page-header p {
+            color: #ddd;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* Timetable */
+        .schedule {
+            padding: 70px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #ff4da6;
+            font-size: 36px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            background: #1d1d1d;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #ff4da6;
+            color: white;
+            padding: 18px;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 18px 12px;
+            text-align: center;
+            border: 1px solid #333;
+            color: #ddd;
+        }
+
+        tr:hover td {
+            background: #252525;
+        }
+
+        .dance {
+            color: #ff4da6;
+            font-weight: bold;
+        }
+
+        .time {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .instructor {
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .level {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: #3a2133;
+            color: #ff8bc4;
+            font-size: 12px;
+        }
+
+        /* Batch Cards */
+        .batches {
+            background: #181818;
+            padding: 70px 7%;
+        }
+
+        .batch-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .batch-card {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .batch-icon {
+            font-size: 45px;
+        }
+
+        .batch-card h3 {
+            color: #ff4da6;
+            margin: 12px 0;
+        }
+
+        .batch-card p {
+            color: #bbb;
+        }
+
+        /* Notice */
+        .notice {
+            padding: 60px 7%;
+            text-align: center;
+        }
+
+        .notice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            background: #1d1d1d;
+            border-left: 5px solid #ff4da6;
+            border-radius: 10px;
+        }
+
+        .notice-box h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        .notice-box p {
+            color: #ccc;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 70px 7%;
+            background: linear-gradient(135deg, #451536, #111);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff4da6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e60073;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            color: #ff4da6;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            💃 Hema Dance Academy
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="instructors.html">Instructors</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Header -->
+    <header class="page-header">
+
+        <div>
+
+            <h1>Class <span>Timetable</span></h1>
+
+            <p>
+                Plan your week and never miss a dance class.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- Weekly Schedule -->
+    <section class="schedule">
+
+        <div class="section-title">
+
+            <h2>Weekly Dance Schedule</h2>
+
+            <p>
+                Choose a convenient time and join your favorite class.
+            </p>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Day</th>
+                        <th>Time</th>
+                        <th>Dance Style</th>
+                        <th>Instructor</th>
+                        <th>Level</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Monday</td>
+                        <td class="time">5:00 PM - 6:00 PM</td>
+                        <td class="dance">Classical</td>
+                        <td class="instructor">Hema</td>
+                        <td><span class="level">Beginner</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Monday</td>
+                        <td class="time">6:30 PM - 7:30 PM</td>
+                        <td class="dance">Hip Hop</td>
+                        <td class="instructor">Rahul</td>
+                        <td><span class="level">Intermediate</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Tuesday</td>
+                        <td class="time">5:00 PM - 6:00 PM</td>
+                        <td class="dance">Bollywood</td>
+                        <td class="instructor">Arjun</td>
+                        <td><span class="level">Beginner</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Tuesday</td>
+                        <td class="time">6:30 PM - 7:30 PM</td>
+                        <td class="dance">Contemporary</td>
+                        <td class="instructor">Anjali</td>
+                        <td><span class="level">Intermediate</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Wednesday</td>
+                        <td class="time">5:00 PM - 6:00 PM</td>
+                        <td class="dance">Hip Hop</td>
+                        <td class="instructor">Rahul</td>
+                        <td><span class="level">Beginner</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Wednesday</td>
+                        <td class="time">6:30 PM - 8:00 PM</td>
+                        <td class="dance">Group Dance</td>
+                        <td class="instructor">Hema</td>
+                        <td><span class="level">All Levels</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Thursday</td>
+                        <td class="time">5:00 PM - 6:00 PM</td>
+                        <td class="dance">Classical</td>
+                        <td class="instructor">Hema</td>
+                        <td><span class="level">Intermediate</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Thursday</td>
+                        <td class="time">6:30 PM - 7:30 PM</td>
+                        <td class="dance">Freestyle</td>
+                        <td class="instructor">Rahul</td>
+                        <td><span class="level">All Levels</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Friday</td>
+                        <td class="time">5:00 PM - 6:00 PM</td>
+                        <td class="dance">Bollywood</td>
+                        <td class="instructor">Arjun</td>
+                        <td><span class="level">All Levels</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Saturday</td>
+                        <td class="time">4:00 PM - 5:30 PM</td>
+                        <td class="dance">Contemporary</td>
+                        <td class="instructor">Anjali</td>
+                        <td><span class="level">All Levels</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Saturday</td>
+                        <td class="time">6:00 PM - 7:30 PM</td>
+                        <td class="dance">Group Dance</td>
+                        <td class="instructor">Hema</td>
+                        <td><span class="level">All Levels</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- Batch Information -->
+    <section class="batches">
+
+        <div class="section-title">
+
+            <h2>Available Batches</h2>
+
+            <p>
+                Select the batch that suits you best.
+            </p>
+
+        </div>
+
+
+        <div class="batch-container">
+
+            <div class="batch-card">
+
+                <div class="batch-icon">               
+                  <img src="hemappics/time.jpeg"width=100% height=160>
+</div>
+
+                <h3>Morning Batch</h3>
+
+                <p>
+                    7:00 AM - 8:00 AM
+                </p>
+
+                <p>
+                    Suitable for students and working professionals.
+                </p>
+
+            </div>
+
+
+            <div class="batch-card">
+
+                <div class="batch-icon">      
+                   <img src="hemappics/time2.jpeg"width=100% height=160>
+</div>
+
+                <h3>Evening Batch</h3>
+
+                <p>
+                    5:00 PM - 7:30 PM
+                </p>
+
+                <p>
+                    Perfect for school and college students.
+                </p>
+
+            </div>
+
+
+            <div class="batch-card">
+
+                <div class="batch-icon">   
+              <img src="hemappics/time3.png"width=100% height=160>
+</div>
+
+                <h3>Weekend Batch</h3>
+
+                <p>
+                    Saturday & Sunday
+                </p>
+
+                <p>
+                    Flexible classes for busy schedules.
+                </p>
+
+            </div>
+
+
+            <div class="batch-card">
+
+                <div class="batch-icon">  
+                 <img src="hemappics/time4.jpeg"width=100% height=160>
+</div>
+
+                <h3>Advanced Batch</h3>
+
+                <p>
+                    Special Training
+                </p>
+
+                <p>
+                    Designed for competitions and performances.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Notice -->
+    <section class="notice">
+
+        <div class="notice-box">
+
+            <h3>📢 Important Notice</h3>
+
+            <p>
+                Students are requested to arrive at least 10 minutes
+                before the scheduled class. Timings may change during
+                special events, workshops and holidays.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <h2>Find Your Perfect Dance Class</h2>
+
+        <p>
+            Choose your batch and start dancing with Hema Dance Academy.
+        </p>
+
+        <a href="registration.html" class="btn">
+            Register Now
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>💃 Hema Dance Academy</h3>
+
+        <p>
+            Learn • Express • Perform • Inspire
+        </p>
+
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+        </div>
+
+        <p>
+            © 2026 Hema Dance Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>

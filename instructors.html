@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Instructors - Hema Dance Academy</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #181818;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #ff4da6;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff4da6;
+        }
+
+        /* Header */
+        .page-header {
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.8)),
+                url("images/instructors-banner.jpg") center/cover;
+        }
+
+        .page-header h1 {
+            font-size: 52px;
+        }
+
+        .page-header h1 span {
+            color: #ff4da6;
+        }
+
+        .page-header p {
+            color: #ddd;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Instructors */
+        .instructors {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #ff4da6;
+            font-size: 36px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        .instructor-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .instructor-card {
+            background: #1d1d1d;
+            border-radius: 18px;
+            overflow: hidden;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 77, 166, .2);
+        }
+
+        .instructor-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .instructor-content {
+            padding: 25px;
+        }
+
+        .instructor-content h3 {
+            color: #ff4da6;
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .dance-style {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .instructor-content p {
+            color: #bbb;
+        }
+
+        .experience {
+            margin-top: 15px;
+            color: #ff4da6;
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skills {
+            background: #181818;
+            padding: 70px 7%;
+        }
+
+        .skill-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: #222;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .skill-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: #bbb;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 70px 7%;
+            background: linear-gradient(135deg, #451536, #111);
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ff4da6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e60073;
+        }
+
+        /* Footer */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer h3 {
+            color: #ff4da6;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+        }
+
+        .social {
+            margin: 15px 0;
+        }
+
+        .social a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .social a:hover {
+            color: #ff4da6;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-header h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <div class="logo">
+            💃 Hema Dance Academy
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="instructors.html">Instructors</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Header -->
+    <header class="page-header">
+
+        <div>
+
+            <h1>Our <span>Expert Instructors</span></h1>
+
+            <p>
+                Learn from experienced and passionate dance professionals.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- Instructors -->
+    <section class="instructors">
+
+        <div class="section-title">
+
+            <h2>Meet Our Instructors</h2>
+
+            <p>
+                Our instructors help every student discover their
+                passion and improve their dance skills.
+            </p>
+
+        </div>
+
+
+        <div class="instructor-container">
+
+
+            <!-- Instructor 1 -->
+            <div class="instructor-card">
+
+                <img src="hemappics/instructor1.png"
+                     alt="Hema - Dance Instructor">
+
+                <div class="instructor-content">
+
+                    <h3>Hema</h3>
+
+                    <div class="dance-style">
+                        Classical Dance Instructor
+                    </div>
+
+                    <p>
+                        Specializes in Indian classical dance,
+                        expressions, graceful movements and
+                        traditional techniques.
+                    </p>
+
+                    <div class="experience">
+                        ⭐ 10+ Years Experience
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Instructor 2 -->
+            <div class="instructor-card">
+
+                <img src="hemappics/instructor.png"
+                     alt="Varshini - Dance Instructor">
+
+                <div class="instructor-content">
+
+                    <h3>Varshini</h3>
+
+                    <div class="dance-style">
+                        Hip Hop Instructor
+                    </div>
+
+                    <p>
+                        Expert in hip-hop, freestyle, street dance
+                        and modern choreography.
+                    </p>
+
+                    <div class="experience">
+                        ⭐ 8+ Years Experience
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Instructor 3 -->
+            <div class="instructor-card">
+
+                <img src="hemappics/instructor2.png"
+                     alt="Priya - Dance Instructor">
+
+                <div class="instructor-content">
+
+                    <h3>Priya</h3>
+
+                    <div class="dance-style">
+                        Contemporary Instructor
+                    </div>
+
+                    <p>
+                        Helps students develop flexibility,
+                        creativity and emotional expression.
+                    </p>
+
+                    <div class="experience">
+                        ⭐ 7+ Years Experience
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Instructor 4 -->
+            <div class="instructor-card">
+
+                <img src="hemappics/instructor4.png"
+                     alt="Pravalika - Dance Instructor">
+
+                <div class="instructor-content">
+
+                    <h3>Pravalika</h3>
+
+                    <div class="dance-style">
+                        Bollywood Instructor
+                    </div>
+
+                    <p>
+                        Specializes in Bollywood choreography,
+                        stage performance and energetic dance.
+                    </p>
+
+                    <div class="experience">
+                        ⭐ 6+ Years Experience
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Instructor Skills -->
+    <section class="skills">
+
+        <div class="section-title">
+
+            <h2>Why Learn From Our Instructors?</h2>
+
+            <p>
+                Professional guidance for every level of dancer.
+            </p>
+
+        </div>
+
+
+        <div class="skill-container">
+
+            <div class="skill-card">
+
+                <div class="skill-icon">🎓</div>
+
+                <h3>Professional Training</h3>
+
+                <p>
+                    Structured training programs designed
+                    for different skill levels.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">💃</div>
+
+                <h3>Personal Guidance</h3>
+
+                <p>
+                    Individual attention to improve technique
+                    and performance.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">🏆</div>
+
+                <h3>Stage Experience</h3>
+
+                <p>
+                    Prepare students for competitions,
+                    events and stage performances.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card">
+
+                <div class="skill-icon">❤️</div>
+
+                <h3>Passion for Dance</h3>
+
+                <p>
+                    Our instructors inspire students to
+                    enjoy and love the art of dance.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+
+        <h2>Learn From the Best</h2>
+
+        <p>
+            Join Hema Dance Academy and begin your dance journey today.
+        </p>
+
+        <a href="registration.html" class="btn">
+            Join Now
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h3>💃 Hema Dance Academy</h3>
+
+        <p>
+            Learn • Express • Perform • Inspire
+        </p>
+
+        <div class="social">
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Facebook</a>
+        </div>
+
+        <p>
+            © 2026 Hema Dance Academy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
